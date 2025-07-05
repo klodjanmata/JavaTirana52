@@ -1,4 +1,4 @@
-package sda.javatirana48;
+package protik.javatirana52;
 
 public class Main {
     public static void main(String[] args) {
