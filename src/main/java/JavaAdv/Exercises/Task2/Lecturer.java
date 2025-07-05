@@ -9,8 +9,8 @@ public class Lecturer extends Person{
         this.specialization = specialization;
     }
 
-    public Lecturer(String adress, String name, int salary, String specialization) {
-        super(adress, name);
+    public Lecturer(String name, String address, int salary, String specialization) {
+        super(name, address);
         this.salary = salary;
         this.specialization = specialization;
     }
@@ -33,7 +33,7 @@ public class Lecturer extends Person{
 
     @Override
     public String toString() {
-        return "Lecturer{" +
+        return "Lecturer{" + super.toString() + "\t" +
                 "specialization='" + specialization + '\'' +
                 ", salary=" + salary +
                 '}';
