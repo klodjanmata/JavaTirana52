@@ -1,5 +1,7 @@
 package JavaAdv.Exercises.Task2;
 
+import JavaAdv.Exercises.Helper;
+
 public class Main {
     public static void main(String[] args) {
         Person p = new Lecturer(4000, "Mish dhe Peshk");
@@ -13,5 +15,15 @@ public class Main {
 
         Lecturer lecturer = new Lecturer("Kristjana", "Orikum", 5000, "Web Development");
         System.out.println(lecturer);
+
+        System.out.println("Getting student from user: ");
+        Student studentFromUser = new Student();
+        studentFromUser.setName(Helper.getStringFromUser("Name"));
+        studentFromUser.setAddress(Helper.getStringFromUser("Address"));
+        studentFromUser.setTypeOfStudy(Helper.getStringFromUser("TypeOfStudy"));
+        studentFromUser.setYearOfStudy(Helper.getIntFromUser("YearOfStudy"));
+        studentFromUser.setStudyPrice(Helper.getIntFromUser("PriceOfStudy"));
+
+        System.out.println(studentFromUser);
     }
 }

@@ -19,6 +19,8 @@ public class Student extends Person {
         this.studyPrice = studyPrice;
     }
 
+    public Student() {}
+
     public String getTypeOfStudy() {
         return typeOfStudy;
     }
