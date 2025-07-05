@@ -23,7 +23,6 @@ public class Main {
         studentFromUser.setTypeOfStudy(Helper.getStringFromUser("TypeOfStudy"));
         studentFromUser.setYearOfStudy(Helper.getIntFromUser("YearOfStudy"));
         studentFromUser.setStudyPrice(Helper.getIntFromUser("PriceOfStudy"));
-
         System.out.println(studentFromUser);
     }
 }
