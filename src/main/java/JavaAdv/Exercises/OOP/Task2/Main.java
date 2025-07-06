@@ -1,4 +1,4 @@
-package JavaAdv.Exercises.Task2;
+package JavaAdv.Exercises.OOP.Task2;
 
 import JavaAdv.Exercises.Helper;
 

@@ -1,4 +1,4 @@
-package JavaAdv.Exercises.Task3;
+package JavaAdv.Exercises.OOP.Task3;
 
 public abstract class Shape {
     private String color;

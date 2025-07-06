@@ -1,4 +1,4 @@
-package JavaAdv.Exercises.Task1;
+package JavaAdv.Exercises.OOP.Task1;
 
 public class Point2D {
     private float x;

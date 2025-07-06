@@ -1,4 +1,4 @@
-package JavaAdv.Exercises.Task2;
+package JavaAdv.Exercises.OOP.Task2;
 
 public class Lecturer extends Person{
     private String specialization;

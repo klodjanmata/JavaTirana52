@@ -1,4 +1,4 @@
-package JavaAdv.Exercises.Task1;
+package JavaAdv.Exercises.OOP.Task1;
 
 public class Main {
     public static void main(String[] args) {

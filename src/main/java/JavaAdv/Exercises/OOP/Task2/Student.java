@@ -1,4 +1,4 @@
-package JavaAdv.Exercises.Task2;
+package JavaAdv.Exercises.OOP.Task2;
 
 public class Student extends Person {
     private String typeOfStudy;

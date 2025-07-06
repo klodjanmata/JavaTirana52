@@ -1,4 +1,4 @@
-package JavaAdv.Exercises.Task3;
+package JavaAdv.Exercises.OOP.Task3;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package JavaAdv.Exercises.Task2;
+package JavaAdv.Exercises.OOP.Task2;
 
 public abstract class Person {
     private String name;

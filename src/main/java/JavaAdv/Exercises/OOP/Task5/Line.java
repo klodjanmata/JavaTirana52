@@ -1,6 +1,6 @@
-package JavaAdv.Exercises.Task5;
+package JavaAdv.Exercises.OOP.Task5;
 
-import JavaAdv.Exercises.Task1.Point2D;
+import JavaAdv.Exercises.OOP.Task1.Point2D;
 
 public class Line {
     public Point2D begin;

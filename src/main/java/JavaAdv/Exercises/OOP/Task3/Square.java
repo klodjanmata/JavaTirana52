@@ -1,4 +1,4 @@
-package JavaAdv.Exercises.Task3;
+package JavaAdv.Exercises.OOP.Task3;
 
 public class Square extends Rectangle{
 
