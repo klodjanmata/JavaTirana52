@@ -67,6 +67,8 @@ public class BookService {
         System.out.println(result);
     }
 
-
+    public List<Book> getAllBooks() {
+        return books;
+    }
 
 }

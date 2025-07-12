@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     private static BookService bookService = new BookService();
+    private static BooksCsvUtil booksCsvUtil = new BooksCsvUtil();
 
     public static void main(String[] args) {
         while(true){
@@ -46,6 +47,7 @@ public class Main {
                 bookService.printBookList();
                 break;
             case 0:
+                booksCsvUtil.writeToFile(bookService.getAllBooks());
                 System.out.println("Shutting down");
                 return true;
         }
