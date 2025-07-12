@@ -9,5 +9,18 @@ public enum Genre {
     FANTASY,
     SCIENCE_FICTION,
     BIOGRAPHY,
-    ENCYCLOPEDIA
+    ENCYCLOPEDIA;
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("[ ");
+
+        for (Genre genre : Genre.values()) {
+            result.append(genre);
+            result.append(", ");
+        }
+
+        result.append(" ]");
+        return result.toString();
+    }
 }

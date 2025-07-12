@@ -3,13 +3,12 @@ package JavaAdv.Exercises.Collections.Task2;
 import java.util.Scanner;
 
 public class Main {
+    private static BookService bookService = new BookService();
 
     public static void main(String[] args) {
-        BookService bookService = new BookService();
         while(true){
             printMenu();
-            int choice = getChoice();
-            if(manageChoice(choice)){
+            if(manageChoice(getChoice())){
                 return;
             }
         }
@@ -41,6 +40,7 @@ public class Main {
         switch(choice){
             case 1:
                 System.out.println("Adding book");
+                bookService.add();
                 break;
             case 0:
                 System.out.println("Shutting down");
