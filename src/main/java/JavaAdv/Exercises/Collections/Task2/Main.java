@@ -1,13 +1,52 @@
 package JavaAdv.Exercises.Collections.Task2;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
         BookService bookService = new BookService();
         while(true){
             printMenu();
-            int choice;
+            int choice = getChoice();
+            if(manageChoice(choice)){
+                return;
+            }
         }
+    }
+
+    public static int getChoice(){
+        int choice;
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            try {
+                System.out.print("Enter choice: ");
+                choice = scanner.nextInt();
+//                if (choice > 1000){
+//                    throw new BufferOverflowException();
+//                }
+                return choice;
+//            }catch (InputMismatchException e){
+//                System.out.println("Invalid choice, try again");
+//                scanner.nextLine();
+//            }catch (BufferOverflowException e){
+//                System.out.println("Number is too big, try again");
+            }catch (Exception e){
+                System.out.println("Invalid choice, try again");
+            }
+        }
+    }
+
+    public static boolean manageChoice(int choice){
+        switch(choice){
+            case 1:
+                System.out.println("Adding book");
+                break;
+            case 0:
+                System.out.println("Shutting down");
+                return true;
+        }
+        return false;
     }
 
     public static void printMenu(){
