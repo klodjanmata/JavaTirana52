@@ -7,6 +7,7 @@ public class Main {
     private static BooksCsvUtil booksCsvUtil = new BooksCsvUtil();
 
     public static void main(String[] args) {
+        bookService.setAllBooks(booksCsvUtil.readFromFile());
         while(true){
             printMenu();
             if(manageChoice(getChoice())){

@@ -71,4 +71,8 @@ public class BookService {
         return books;
     }
 
+    public void setAllBooks(List<Book> books) {
+        this.books = books;
+    }
+
 }

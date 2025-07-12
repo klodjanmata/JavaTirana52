@@ -1,13 +1,12 @@
 package JavaAdv.Exercises.Collections.Task2;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BooksCsvUtil {
     private final String FILEPATH = "Files/Books.csv";
-    private final String SEPARATOR = ", ";
+    private final String SEPARATOR = ",";
 
     public void writeToFile(List<Book> bookList) {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(FILEPATH))){
@@ -32,7 +31,30 @@ public class BooksCsvUtil {
     }
 
     public List<Book> readFromFile() {
-        return null;
+        List<Book> resultList = new ArrayList<>();
+        try(BufferedReader reader = new BufferedReader(new FileReader(FILEPATH))){
+            reader.readLine();
+            String line;
+            while((line = reader.readLine()) != null){
+                String[] fields = line.split(SEPARATOR);
+                Book b = new Book();
+                b.setIsbn(fields[0]);
+                b.setTitle(fields[1]);
+                b.setYearOfRelease(Integer.parseInt(fields[2]));
+                b.setPrice(Integer.parseInt(fields[3]));
+                b.setGenre(Genre.valueOf(fields[4]));
+                Author author = new Author();
+                author.setFirstname(fields[5]);
+                author.setLastname(fields[6]);
+                b.setAuthor(author);
+                resultList.add(b);
+            }
+            reader.close();
+            System.out.println("Books read successfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultList;
     }
 
     public String getHeader(){
