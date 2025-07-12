@@ -15,6 +15,11 @@ public class Author {
         this.gender = gender;
     }
 
+    public Author(String firstname, String lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
     public String getFirstname() {
         return firstname;
     }

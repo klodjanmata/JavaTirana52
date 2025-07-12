@@ -42,6 +42,9 @@ public class Main {
                 System.out.println("Adding book");
                 bookService.add();
                 break;
+            case 4:
+                bookService.printBookList();
+                break;
             case 0:
                 System.out.println("Shutting down");
                 return true;
@@ -54,7 +57,7 @@ public class Main {
         System.out.println("1. Add Book");
         System.out.println("2. Remove Book");
         System.out.println("3. Search Book");
-
+        System.out.println("4. Print Books List");
         System.out.println("0. Exit");
     }
 }

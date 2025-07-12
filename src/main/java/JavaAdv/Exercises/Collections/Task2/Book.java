@@ -83,13 +83,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "isbn='" + isbn + '\'' +
-                ", title='" + title + '\'' +
-                ", price=" + price +
-                ", yearOfRelease=" + yearOfRelease +
-                ", author=" + author +
-                ", genre=" + genre +
-                '}';
+        return isbn + ", " + title + ", " + yearOfRelease + ", " + price + ", " + genre.name() + ", " + author.getFirstname() + ", " + author.getLastname();
     }
 }

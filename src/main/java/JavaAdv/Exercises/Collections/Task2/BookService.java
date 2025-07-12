@@ -16,6 +16,16 @@ public class BookService {
         this.books = books;
     }
 
+    public void printBookList(){
+        System.out.println(getHeader());
+        for (Book book : books) {
+            System.out.println(book.toString());
+        }
+    }
+
+    public String getHeader(){
+        return "ISBN\tTitle\tYearOfRelease\tPrice\tGenre\tAuthor";
+    }
     public void add() {
         Book book = new Book();
         System.out.println("Enter necessary parameters: ");
@@ -32,6 +42,10 @@ public class BookService {
                 System.out.println("Error in setting genre, try again");
             }
         }
+        Author author = new Author();
+        author.setFirstname(Helper.getStringFromUser("Authors Firstname"));
+        author.setLastname(Helper.getStringFromUser("Authors Lastname"));
+        book.setAuthor(author);
         books.add(book);
         System.out.println("Book added successfully");
     }
