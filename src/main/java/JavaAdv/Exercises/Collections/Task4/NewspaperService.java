@@ -37,10 +37,6 @@ public class NewspaperService {
     }
 
 
-
-
-
-
     public NewspaperService(HashMap<String, Newspaper> newsMap) {
         this.newsMap = newsMap;
     }
