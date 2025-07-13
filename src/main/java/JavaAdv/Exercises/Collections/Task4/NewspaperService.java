@@ -1,6 +1,8 @@
 package JavaAdv.Exercises.Collections.Task4;
 
 
+import JavaAdv.Exercises.Helper;
+
 import java.util.HashMap;
 
 public class NewspaperService {
@@ -22,7 +24,17 @@ public class NewspaperService {
         this.newsMap.put(newspaper.getSerialNumber(), newspaper);
     }
 
+    public void addNewspaperFromUser() {
+        Newspaper newspaper = new Newspaper();
+        System.out.println("Enter necessary values: ");
+        newspaper.setSerialNumber(Helper.getStringFromUser("SerialNumber"));
+        if (newspaper.getSerialNumber() == null || newspaper.getSerialNumber().isEmpty()) {}
+        // Kontroll numrit serial
+        newspaper.setTitle(Helper.getStringFromUser("Title"));
+        newspaper.setPublisher(Helper.getStringFromUser("Publisher"));
 
+        addNewspaper(newspaper);
+    }
 
 
 
