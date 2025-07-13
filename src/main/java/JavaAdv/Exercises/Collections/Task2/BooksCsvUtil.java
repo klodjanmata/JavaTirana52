@@ -9,7 +9,8 @@ public class BooksCsvUtil {
     private final String SEPARATOR = ",";
 
     public void writeToFile(List<Book> bookList) {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(FILEPATH))){
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(FILEPATH));
             writer.write(getHeader());
             for(Book b : bookList){
                 writer.newLine();

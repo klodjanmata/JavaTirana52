@@ -1,5 +1,10 @@
 package JavaAdv.Exercises;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 public class PoesyWriter {
     private final String poesy =
             "Në Heshtje Rritet Drita\n" +
@@ -22,10 +27,45 @@ public class PoesyWriter {
     private final String FILEPATH = "Files/Poesy.txt";
 
     public static void main(String[] args) {
+        PoesyWriter poesyWriter = new PoesyWriter();
+//        poesyWriter.writePoesy();
+        System.out.println(poesyWriter.readPoesy());
 
     }
 
     public void writePoesy() {
-
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(FILEPATH));
+            writer.write(poesy);
+            writer.close();
+            System.out.println("Poesy written to file!");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
+
+    public String readPoesy() {
+        String result = "";
+        try(BufferedReader reader = new BufferedReader(new FileReader(FILEPATH))){
+            String line;
+            while((line = reader.readLine()) != null){
+                result += line;
+                result += "\n";
+            }
+            reader.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
 }
+
+
+/**
+
+ *
+ *
+ *
+ */

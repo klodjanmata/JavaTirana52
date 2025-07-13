@@ -22,6 +22,10 @@ public class Book {
         this.genre = genre;
     }
 
+    public Book getNewBook(){
+        return new Book();
+    }
+
     public String getIsbn() {
         return isbn;
     }
