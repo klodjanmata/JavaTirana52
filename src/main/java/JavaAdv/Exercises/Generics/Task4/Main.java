@@ -5,13 +5,13 @@ public class Main {
         MediaLibrary<Book> bookMediaLibrary = new MediaLibrary();
         MediaLibrary<Movie> movieMediaLibrary = new MediaLibrary();
         MediaLibrary<Newspaper> newspaperMediaLibrary = new MediaLibrary();
-        MediaLibrary<Magazine> magazineMediaLibrary = new MediaLibrary();
+        //MediaLibrary<Magazine> magazineMediaLibrary = new MediaLibrary();
 
         Book book = new Book();
         Movie movie = new Movie();
         Newspaper newspaper = new Newspaper();
 
         bookMediaLibrary.add(book);
-        bookMediaLibrary.add(newspaper);
+        //bookMediaLibrary.add(newspaper);
     }
 }
