@@ -8,21 +8,40 @@ import java.util.HashMap;
 import java.util.List;
 
 public class VehicleService {
-    HashMap<String, Vehicle> vehicles = new HashMap<>();
+    HashMap<String, Vehicle> vehicles;
+
+    public VehicleService(){
+        vehicles = new HashMap<>();
+    }
 
     public void add() {
         System.out.println("Input Correct Data");
         System.out.println(VehicleType.printAllValues());
         String vehicleType = Helper.getStringFromUser("VehicleType");
-        Vehicle newVehicle;
+        Vehicle newVehicle = null;
         if (vehicleType.equalsIgnoreCase(VehicleType.CAR.name())) {
             newVehicle = getCarFromUser();
         }
         else if (vehicleType.equalsIgnoreCase(VehicleType.MOTORCYCLE.name())) {
-
+            System.out.println("Not supported vehicle type");
         }
         else if (vehicleType.equalsIgnoreCase(VehicleType.MINIBUS.name())) {
+            System.out.println("Not supported vehicle type");
+        }
+        if (newVehicle != null){
+            vehicles.put(newVehicle.getLicensePlate(), newVehicle);
+            System.out.println("Vehicle added successfully");
+            return;
+        }
+        else {
+            System.out.println("Can't add vehicle");
+        }
+    }
 
+    public void printAllVehicles() {
+        for (Vehicle vehicle : vehicles.values()) {
+            System.out.println(vehicle.getLicensePlate() + " " + vehicle.getMake()
+                                + " " + vehicle.getModel() + " " + vehicle.getYear());
         }
     }
 

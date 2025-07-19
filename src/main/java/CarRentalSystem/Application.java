@@ -2,6 +2,8 @@ package CarRentalSystem;
 
 public class Application {
 
+    private static ApplicationManager applicationManager = new ApplicationManager();
+
     public static void main(String[] args) {
         while (true){
             Menu.mainMenu();
@@ -26,12 +28,14 @@ public class Application {
     private static boolean manageAction(int choice) {
         switch (choice) {
             case 1:
-                System.out.println("Hello User!");
+                applicationManager.addVehicle();
+                break;
+            case 2:
+                applicationManager.printAllVehicles();
                 break;
             case 0:
                 System.out.println("Shut down");
                 return true;
-
             default:
                 System.out.println("Invalid choice!!!");
         }
