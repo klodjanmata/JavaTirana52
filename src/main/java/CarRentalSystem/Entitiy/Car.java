@@ -9,8 +9,8 @@ public class Car extends Vehicle{
     private boolean hasNavigation;
     private Transmission transmission;
 
-    public Car(String vin, String licensePlate, String make, String model, int year, String color, int seats, int minPricePerDay, int minNumberOfDays, EngineType engineType, int numberOfDoors, boolean hasSunroof, BodyType bodyType, boolean hasNavigation, Transmission transmission) {
-        super(vin, licensePlate, make, model, year, color, seats, minPricePerDay, minNumberOfDays);
+    public Car(String vin, String licensePlate, String make, String model, int year, String color, int seats, int minPricePerDay, int minNumberOfDays, EngineType engineType, int numberOfDoors, boolean hasSunroof, BodyType bodyType, boolean hasNavigation, Transmission transmission, boolean available) {
+        super(vin, licensePlate, make, model, year, color, seats, minPricePerDay, minNumberOfDays, available);
         this.engineType = engineType;
         this.numberOfDoors = numberOfDoors;
         this.hasSunroof = hasSunroof;
@@ -19,7 +19,7 @@ public class Car extends Vehicle{
         this.transmission = transmission;
     }
 
-    public Car(){
+    public Car() {
         super();
     }
 

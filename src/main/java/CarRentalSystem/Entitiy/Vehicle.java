@@ -10,8 +10,9 @@ public abstract class Vehicle {
     private int seats;
     private int minPricePerDay;
     private int minNumberOfDays;
+    private boolean available;
 
-    public Vehicle(String vin, String licensePlate, String make, String model, int year, String color, int seats, int minPricePerDay, int minNumberOfDays) {
+    public Vehicle(String vin, String licensePlate, String make, String model, int year, String color, int seats, int minPricePerDay, int minNumberOfDays, boolean available) {
         this.vin = vin;
         this.licensePlate = licensePlate;
         this.make = make;
@@ -21,6 +22,7 @@ public abstract class Vehicle {
         this.seats = seats;
         this.minPricePerDay = minPricePerDay;
         this.minNumberOfDays = minNumberOfDays;
+        this.available = available;
     }
 
     public Vehicle(){}
@@ -31,6 +33,14 @@ public abstract class Vehicle {
 
     public void setMinPricePerDay(int minPricePerDay) {
         this.minPricePerDay = minPricePerDay;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public int getMinNumberOfDays() {

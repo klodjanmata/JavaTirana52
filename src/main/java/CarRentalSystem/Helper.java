@@ -1,5 +1,6 @@
 package CarRentalSystem;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Helper {
@@ -20,6 +21,15 @@ public class Helper {
         System.out.print(message + ": ");
         Scanner sc = new Scanner(System.in);
         return sc.nextFloat();
+    }
+
+    public static String convertListToString(List<String> values) {
+        String result = "[";
+        for (String value : values) {
+            result += value + ", ";
+        }
+        result += "]";
+        return result;
     }
 }
 
