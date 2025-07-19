@@ -4,6 +4,7 @@ import CarRentalSystem.Service.VehicleType;
 
 import java.util.Arrays;
 
+
 public enum EngineType {
     ELECTRIC,
     PETROL,

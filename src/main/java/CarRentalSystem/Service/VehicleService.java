@@ -1,8 +1,6 @@
 package CarRentalSystem.Service;
 
-import CarRentalSystem.Entitiy.Car;
-import CarRentalSystem.Entitiy.MiniBuss;
-import CarRentalSystem.Entitiy.Vehicle;
+import CarRentalSystem.Entitiy.*;
 import CarRentalSystem.Helper;
 
 import java.util.ArrayList;
@@ -45,7 +43,19 @@ public class VehicleService {
         Car car = new Car();
         getVehicleFromUser(car);
 
-
+        System.out.println(EngineType.printAllValues());
+        car.setEngineType(EngineType.valueOf(
+                Helper.getStringFromUser("EngineType").toUpperCase()));
+        car.setNumberOfDoors(Helper.getIntFromUser("NumberOfDoors"));
+        car.setHasSunroof(Helper.getBooleanFromUser("HasSunroof"));
+        System.out.println(BodyType.printAllValues());
+        car.setBodyType(BodyType.valueOf(
+                Helper.getStringFromUser("BodyType").toUpperCase()));
+        car.setHasNavigation(Helper.getBooleanFromUser("HasNavigation"));
+        System.out.println(Transmission.printAllValues());
+        car.setTransmission(Transmission.valueOf(
+                Helper.getStringFromUser("Transmission").toUpperCase()
+        ));
         return car;
     }
 

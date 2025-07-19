@@ -31,5 +31,11 @@ public class Helper {
         result += "]";
         return result;
     }
+
+    public static boolean getBooleanFromUser(String message){
+        System.out.print(message + ": ");
+        Scanner sc = new Scanner(System.in);
+        return sc.nextBoolean();
+    }
 }
 
