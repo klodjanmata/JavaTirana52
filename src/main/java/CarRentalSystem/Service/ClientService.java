@@ -14,6 +14,10 @@ public class ClientService {
         clientsMap = new HashMap<>();
     }
 
+    public ClientService(HashMap<String, Client> clientsMap) {
+        this.clientsMap = clientsMap;
+    }
+
     public void add() {
         System.out.println("Add the necessary client information");
         Client client = new Client();
@@ -44,5 +48,13 @@ public class ClientService {
                     client.getLicenceCategory()
             );
         }
+    }
+
+    public HashMap<String, Client> getClientsMap() {
+        return clientsMap;
+    }
+
+    public void setClientsMap(HashMap<String, Client> clientsMap) {
+        this.clientsMap = clientsMap;
     }
 }

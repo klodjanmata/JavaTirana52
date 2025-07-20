@@ -41,6 +41,7 @@ public class Application {
                 break;
             case 0:
                 System.out.println("Shut down");
+                applicationManager.shutDown();
                 return true;
             default:
                 System.out.println("Invalid choice!!!");

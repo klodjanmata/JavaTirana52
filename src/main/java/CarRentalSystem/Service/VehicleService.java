@@ -14,6 +14,10 @@ public class VehicleService {
         vehicles = new HashMap<>();
     }
 
+    public VehicleService(HashMap<String, Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
+
     public void add() {
         System.out.println("Input Correct Data");
         System.out.println(VehicleType.printAllValues());
