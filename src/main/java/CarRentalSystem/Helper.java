@@ -1,9 +1,13 @@
 package CarRentalSystem;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class Helper {
+
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
     public static String getStringFromUser(String message){
         System.out.print(message + ": ");
@@ -40,6 +44,18 @@ public class Helper {
         System.out.print(message + ": ");
         Scanner sc = new Scanner(System.in);
         return sc.nextBoolean();
+    }
+
+    public static Date getDateFromUser(String message){
+        System.out.println("Expected date format: dd.MM.yyyy");
+        System.out.print(message + ": ");
+        Scanner sc = new Scanner(System.in);
+        try {
+            return dateFormat.parse(sc.nextLine());
+        }catch (Exception e){
+            return new Date();
+        }
+
     }
 }
 

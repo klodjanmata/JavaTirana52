@@ -39,6 +39,9 @@ public class Application {
             case 4:
                 applicationManager.printAllClients();
                 break;
+            case 5:
+                System.out.println("Function not supported");
+                break;
             case 0:
                 System.out.println("Shut down");
                 applicationManager.shutDown();

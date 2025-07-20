@@ -46,8 +46,12 @@ public class VehicleService {
         System.out.println("######## Vehicles list ########");
         System.out.println("LicensePlate\tMake\tModel\tYear");
         for (Vehicle vehicle : vehicles.values()) {
-            System.out.println(vehicle.getLicensePlate() + " " + vehicle.getMake()
-                                + " " + vehicle.getModel() + " " + vehicle.getYear());
+            System.out.println(
+                    vehicle.getLicensePlate() + "\t" +
+                    vehicle.getMake() + "\t" +
+                    vehicle.getModel() + "\t " +
+                    vehicle.getYear()
+            );
         }
     }
 

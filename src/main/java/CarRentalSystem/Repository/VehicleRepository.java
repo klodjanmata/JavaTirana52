@@ -41,9 +41,9 @@ public class VehicleRepository {
                 if (VehicleType.valueOf(fields[0]) == VehicleType.MOTORCYCLE) {
 
                 }
-
-
             }
+            reader.close();
+            System.out.println("Successfully read vehicles from the file.");
         }catch (Exception e){
             e.printStackTrace();
         }
