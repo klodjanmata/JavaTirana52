@@ -92,4 +92,12 @@ public class VehicleService {
         // Minibuss specific atributes
         return miniBuss;
     }
+
+    public HashMap<String, Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(HashMap<String, Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
 }

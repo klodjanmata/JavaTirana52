@@ -40,7 +40,7 @@ public class ApplicationManager {
 
     public void shutDown() {
         clientRepository.writeToFile(clientService.getClientsMap());
-
+        vehicleRepository.writeToFile(vehicleService.getVehicles());
     }
 
 
