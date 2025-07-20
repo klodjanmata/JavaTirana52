@@ -11,6 +11,10 @@ public class Helper {
         return sc.nextLine();
     }
 
+    public static char getCharFromUser(String message){
+        return Helper.getStringFromUser(message).charAt(0);
+    }
+
     public static int getIntFromUser(String message){
         System.out.print(message + ": ");
         Scanner sc = new Scanner(System.in);

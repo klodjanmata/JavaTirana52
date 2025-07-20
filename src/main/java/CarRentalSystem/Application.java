@@ -33,6 +33,12 @@ public class Application {
             case 2:
                 applicationManager.printAllVehicles();
                 break;
+            case 3:
+                applicationManager.addClient();
+                break;
+            case 4:
+                applicationManager.printAllClients();
+                break;
             case 0:
                 System.out.println("Shut down");
                 return true;
