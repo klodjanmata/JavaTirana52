@@ -66,6 +66,7 @@ public class VehicleService {
 
     private Vehicle getCarFromUser() {
         Car car = new Car();
+        car.setVehicleType(VehicleType.CAR);
         getVehicleFromUser(car);
 
         System.out.println(EngineType.printAllValues());
@@ -86,6 +87,7 @@ public class VehicleService {
 
     private Vehicle getMinibusFromUser() {
         MiniBuss miniBuss = new MiniBuss();
+        miniBuss.setVehicleType(VehicleType.MINIBUS);
         getVehicleFromUser(miniBuss);
         // Minibuss specific atributes
         return miniBuss;

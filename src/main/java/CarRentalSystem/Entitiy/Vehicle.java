@@ -1,6 +1,9 @@
 package CarRentalSystem.Entitiy;
 
+import CarRentalSystem.Service.VehicleType;
+
 public abstract class Vehicle {
+    private VehicleType vehicleType;
     private String vin;
     private String licensePlate;
     private String make;
@@ -12,7 +15,10 @@ public abstract class Vehicle {
     private int minNumberOfDays;
     private boolean available;
 
-    public Vehicle(String vin, String licensePlate, String make, String model, int year, String color, int seats, int minPricePerDay, int minNumberOfDays, boolean available) {
+    public Vehicle(VehicleType vehicleType, String vin, String licensePlate, String make, String model,
+                   int year, String color, int seats, int minPricePerDay, int minNumberOfDays,
+                   boolean available) {
+        this.vehicleType = vehicleType;
         this.vin = vin;
         this.licensePlate = licensePlate;
         this.make = make;
@@ -105,5 +111,13 @@ public abstract class Vehicle {
 
     public void setSeats(int seats) {
         this.seats = seats;
+    }
+
+    public VehicleType getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(VehicleType vehicleType) {
+        this.vehicleType = vehicleType;
     }
 }
