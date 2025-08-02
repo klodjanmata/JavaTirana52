@@ -40,7 +40,7 @@ public class Application {
                 applicationManager.printAllClients();
                 break;
             case 5:
-                System.out.println("Function not supported");
+                applicationManager.addRental();
                 break;
             case 0:
                 System.out.println("Shut down");

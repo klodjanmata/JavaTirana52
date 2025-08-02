@@ -6,12 +6,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class Rental_Id_Repository {
-    private final String FILEPATH = "CarRentalFile/Rental_ID.txt";
+    private final String FILEPATH = "CarRentalFiles/Rental_ID.txt";
 
     public void saveId(int id){
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(FILEPATH))){
-            writer.write(id);
-            writer.close();
+            writer.write(Integer.toString(id));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -19,9 +18,7 @@ public class Rental_Id_Repository {
 
     public int readId(){
         try(BufferedReader reader = new BufferedReader(new FileReader(FILEPATH))){
-            int id = Integer.parseInt(reader.readLine());
-            reader.close();
-            return  id;
+            return Integer.parseInt(reader.readLine());
         } catch (Exception e) {
             e.printStackTrace();
         }

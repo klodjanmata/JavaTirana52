@@ -47,7 +47,7 @@ public class ApplicationManager {
         // TODO check if client and car exists, if not, ask the user to register them and return
         rental.setClientId(Helper.getStringFromUser("ClientId"));
         rental.setLicensePlate(Helper.getStringFromUser("LicensePlate"));
-        rentalService.add(rental);
+        rentalService.addRental(rental);
     }
 
 
@@ -56,6 +56,7 @@ public class ApplicationManager {
     public void shutDown() {
         clientRepository.writeToFile(clientService.getClientsMap());
         vehicleRepository.writeToFile(vehicleService.getVehicles());
+        rentalRepository.writeToFile(rentalService.getAllRentals());
     }
 
 
