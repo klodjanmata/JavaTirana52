@@ -5,6 +5,7 @@ import CarRentalSystem.Repository.ClientRepository;
 import CarRentalSystem.Repository.RentalRepository;
 import CarRentalSystem.Repository.VehicleRepository;
 import CarRentalSystem.Service.ClientService;
+import CarRentalSystem.Service.FilterService;
 import CarRentalSystem.Service.RentalService;
 import CarRentalSystem.Service.VehicleService;
 
@@ -44,7 +45,6 @@ public class ApplicationManager {
 
     public void addRental() {
         Rental rental = new Rental();
-        // TODO check if client and car exists, if not, ask the user to register them and return
         rental.setClientId(Helper.getStringFromUser("ClientId").toUpperCase());
         if (!checkIfClientExists(rental.getClientId())){
             System.out.println("Client does not exist! Register him/her first!");
@@ -76,5 +76,42 @@ public class ApplicationManager {
         rentalRepository.writeToFile(rentalService.getAllRentals());
     }
 
+    public void handleFilterSelection(int choice){
+        FilterService filterService = new FilterService(vehicleService.getVehicles(),
+                rentalService.getAllRentals().values().stream().toList());
+        switch (choice){
+            case 1:
+                filterService.filterByVehicleType();
+                break;
+            case 2:
+                filterService.filterByAvailability();
+                break;
+            case 3:
+                filterService.filterByPriceRange();
+                break;
+            case 4:
+                filterService.filterByMake();
+                break;
+            case 5:
+                filterService.filterByModel();
+                break;
+            case 6:
+                filterService.filterByColor();
+                break;
+            case 7:
+                filterService.filterByEngine();
+                break;
+            case 8:
+                filterService.filterByTransmission();
+                break;
+            case 9:
+                filterService.filterByBodyType();
+                break;
+            default:
+                System.out.println("Unsupported filter choice! Try again!");
+                break;
+        }
+        return;
+    }
 
 }

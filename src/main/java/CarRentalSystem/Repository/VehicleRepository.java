@@ -1,7 +1,7 @@
 package CarRentalSystem.Repository;
 
 import CarRentalSystem.Entitiy.*;
-import CarRentalSystem.Service.VehicleType;
+import CarRentalSystem.Entitiy.VehicleType;
 
 import java.io.*;
 import java.util.HashMap;

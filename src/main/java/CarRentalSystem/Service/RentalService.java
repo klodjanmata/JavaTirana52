@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public  class RentalService {
     private HashMap<String, Rental> allRentals;
@@ -41,6 +42,10 @@ public  class RentalService {
         rental.setPricePerDay(Helper.getIntFromUser("Price Per Day"));
         rental.setStartDate(Helper.getLocalDateFromUser("Start Date"));
         rental.setReturnDate(Helper.getLocalDateFromUser("Return Date"));
+        if (!isAvailableOn(rental.getLicensePlate(), rental.getStartDate(), rental.getReturnDate())){
+            System.out.println("Vehicle is not available on the selected dates");
+            return;
+        }
         rental.setNumberOfDays((int) ChronoUnit.DAYS.between(
                 rental.getStartDate(), rental.getReturnDate()));
         rental.setTotalPrice(rental.getPricePerDay() * rental.getNumberOfDays());
@@ -50,6 +55,18 @@ public  class RentalService {
         idRepository.saveId(current);
         allRentals.put(rental.getClientId(), rental);
 
+    }
+
+    private boolean isAvailableOn(String licencePlate, LocalDate start, LocalDate end){
+        List<Rental> vehicleRentals = allRentals.values().stream()
+                .filter(r -> r.getLicensePlate().equals(licencePlate))
+                .filter(r -> r.getStartDate().isBefore(end) &&
+                                    r.getReturnDate().isAfter(start))
+                .toList();
+        if (vehicleRentals.isEmpty()){
+            return true;
+        }
+        return false;
     }
 
     public void printAllRentals(){

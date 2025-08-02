@@ -1,7 +1,5 @@
 package CarRentalSystem.Entitiy;
 
-import CarRentalSystem.Service.VehicleType;
-
 import java.util.Arrays;
 
 

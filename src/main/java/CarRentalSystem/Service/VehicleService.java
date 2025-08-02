@@ -3,9 +3,7 @@ package CarRentalSystem.Service;
 import CarRentalSystem.Entitiy.*;
 import CarRentalSystem.Helper;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class VehicleService {
     HashMap<String, Vehicle> vehicles;

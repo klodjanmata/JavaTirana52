@@ -1,6 +1,4 @@
-package CarRentalSystem.Service;
-
-import CarRentalSystem.Entitiy.Vehicle;
+package CarRentalSystem.Entitiy;
 
 import java.util.Arrays;
 

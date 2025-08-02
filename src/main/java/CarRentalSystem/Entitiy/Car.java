@@ -1,7 +1,5 @@
 package CarRentalSystem.Entitiy;
 
-import CarRentalSystem.Service.VehicleType;
-
 public class Car extends Vehicle{
 
     private EngineType engineType;

@@ -1,7 +1,5 @@
 package CarRentalSystem.Entitiy;
 
-import CarRentalSystem.Service.VehicleType;
-
 public abstract class Vehicle {
     private VehicleType vehicleType;
     private String vin;

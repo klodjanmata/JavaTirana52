@@ -45,6 +45,11 @@ public class Application {
             case 6:
                 applicationManager.printAllRentals();
                 break;
+            case 7:
+                Menu.filterMenu();
+                int filterChoice = getChoice();
+                applicationManager.handleFilterSelection(filterChoice);
+                break;
             case 0:
                 System.out.println("Shut down");
                 applicationManager.shutDown();
