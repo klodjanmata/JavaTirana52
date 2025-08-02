@@ -4,6 +4,12 @@ import CarRentalSystem.Entitiy.Rental;
 import CarRentalSystem.Helper;
 import CarRentalSystem.Repository.Rental_Id_Repository;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.HashMap;
 
 public  class RentalService {
@@ -11,6 +17,7 @@ public  class RentalService {
     private HashMap<String, Rental> pastRentals;
     private HashMap<String, Rental> activeRentals;
     private final Rental_Id_Repository idRepository = new Rental_Id_Repository();
+    public static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     public RentalService(){
         allRentals = new HashMap<>();
@@ -25,17 +32,17 @@ public  class RentalService {
         this.pastRentals = pastRentals;
         this.activeRentals = activeRentals;
     }
-    //   public RentalService(HashMap <String, Rental> rentalHashMap){
-    // this.allRentals = allRentals;
-    // this.pastRentals = pastRentals;
-    // this.activeRentals = activeRentals;
-    //}
+
+    public RentalService(HashMap <String, Rental> allRentals){
+        this.allRentals = allRentals;
+    }
 
     public void addRental(Rental rental){
         rental.setPricePerDay(Helper.getIntFromUser("Price Per Day"));
-        rental.setNumberOfDays(Helper.getIntFromUser("Number of Days"));
-        rental.setStartDate(Helper.getDateFromUser("Start Date"));
-        rental.setReturnDate(Helper.getDateFromUser("Return Date"));
+        rental.setStartDate(Helper.getLocalDateFromUser("Start Date"));
+        rental.setReturnDate(Helper.getLocalDateFromUser("Return Date"));
+        rental.setNumberOfDays((int) ChronoUnit.DAYS.between(
+                rental.getStartDate(), rental.getReturnDate()));
         rental.setTotalPrice(rental.getPricePerDay() * rental.getNumberOfDays());
         rental.setPaid(Helper.getBooleanFromUser("Is Paid"));
         int current = idRepository.readId() + 1;
@@ -57,8 +64,8 @@ public  class RentalService {
                             rental.getLicensePlate()+ "\t" +
                             rental.getPricePerDay()+ "\t" +
                             rental.getNumberOfDays()+ "\t" +
-                            rental.getStartDate()+ "\t" +
-                            rental.getReturnDate()+ "\t" +
+                            DATE_FORMATTER.format(rental.getStartDate())+ "\t" +
+                            DATE_FORMATTER.format(rental.getReturnDate())+ "\t" +
                             rental.getTotalPrice()+ "\t" +
                             rental.isPaid()
             );

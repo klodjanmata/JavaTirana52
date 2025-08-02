@@ -1,6 +1,6 @@
 package CarRentalSystem.Entitiy;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Rental {
     private int Id;
@@ -8,15 +8,15 @@ public class Rental {
     private String licensePlate;
     private int pricePerDay;
     private int numberOfDays;
-    private Date startDate;
-    private Date returnDate;
+    private LocalDate startDate;
+    private LocalDate returnDate;
     private int totalPrice;
     private boolean paid;
 
     public Rental(){}
 
-    public Rental(int id, String clientId, boolean paid, int totalPrice, Date returnDate,
-                  Date startDate, int numberOfDays, int pricePerDay, String licensePlate) {
+    public Rental(int id, String clientId, boolean paid, int totalPrice, LocalDate returnDate,
+                  LocalDate startDate, int numberOfDays, int pricePerDay, String licensePlate) {
         this.Id = id;
         this.clientId = clientId;
         this.paid = paid;
@@ -68,19 +68,19 @@ public class Rental {
         this.numberOfDays = numberOfDays;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 

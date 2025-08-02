@@ -99,7 +99,7 @@ public class VehicleRepository {
             writer.write(car.isHasSunroof() + SEPARATOR);
             writer.write(car.getBodyType() + SEPARATOR);
             writer.write(car.isHasNavigation() + SEPARATOR);
-            writer.write(car.getTransmission() + SEPARATOR);
+            writer.write(car.getTransmission()+"");
         }catch (Exception e){
             e.printStackTrace();
         }

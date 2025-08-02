@@ -1,13 +1,17 @@
 package CarRentalSystem;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class Helper {
 
-    public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    public static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     public static String getStringFromUser(String message){
         System.out.print(message + ": ");
@@ -46,14 +50,16 @@ public class Helper {
         return sc.nextBoolean();
     }
 
-    public static Date getDateFromUser(String message){
+    public static LocalDate getLocalDateFromUser(String message){
         System.out.println("Expected date format: dd.MM.yyyy");
         System.out.print(message + ": ");
         Scanner sc = new Scanner(System.in);
         try {
-            return dateFormat.parse(sc.nextLine());
+            return LocalDate.parse(sc.nextLine(), DATE_FORMATTER);
         }catch (Exception e){
-            return new Date();
+            return new Date().toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
         }
 
     }

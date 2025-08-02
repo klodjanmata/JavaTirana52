@@ -42,6 +42,9 @@ public class Application {
             case 5:
                 applicationManager.addRental();
                 break;
+            case 6:
+                applicationManager.printAllRentals();
+                break;
             case 0:
                 System.out.println("Shut down");
                 applicationManager.shutDown();

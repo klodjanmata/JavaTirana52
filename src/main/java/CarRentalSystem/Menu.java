@@ -11,6 +11,7 @@ public class Menu {
         System.out.println("3. Add Client");
         System.out.println("4. Print All Clients");
         System.out.println("5. Rent a car");
+        System.out.println("6. Print all rentals");
         System.out.println("0. Shut down");
     }
 }
