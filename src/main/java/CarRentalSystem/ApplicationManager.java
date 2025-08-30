@@ -1,5 +1,6 @@
 package CarRentalSystem;
 
+import CarRentalSystem.Entitiy.Client;
 import CarRentalSystem.Entitiy.Rental;
 import CarRentalSystem.Repository.ClientRepository;
 import CarRentalSystem.Repository.RentalRepository;
@@ -8,6 +9,11 @@ import CarRentalSystem.Service.ClientService;
 import CarRentalSystem.Service.FilterService;
 import CarRentalSystem.Service.RentalService;
 import CarRentalSystem.Service.VehicleService;
+import CarRentalSystem.dbConnection.DatabaseConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class ApplicationManager {
     private VehicleService vehicleService;
@@ -25,6 +31,38 @@ public class ApplicationManager {
         vehicleService = new VehicleService(vehicleRepository.readFromFile());
         clientService = new ClientService(clientRepository.readFromFile());
         rentalService = new RentalService(rentalRepository.readFromFile());
+
+        executeUpgrade(clientService);
+    }
+
+    public void executeUpgrade(ClientService clientService){
+        if (checkIfUpgradeNeeded("client")){
+            for (Client c : clientService.getClientsMap().values()){
+                clientRepository.save(c);
+            }
+            System.out.println("SAVED CLIENTS IN DATABASE");
+        }
+        if (checkIfUpgradeNeeded("vehicle")){
+
+        }
+        if (checkIfUpgradeNeeded("rental")){
+
+        }
+    }
+
+    private boolean checkIfUpgradeNeeded(String tableName){
+        try(Connection connection = DatabaseConnection.dbConnection()){
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + tableName + " LIMIT 1");
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()){
+                System.out.printf("NO UPGRADE NEEDED FOR " + tableName);
+                return false;
+            }
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void addVehicle() {
