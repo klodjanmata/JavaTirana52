@@ -2,16 +2,34 @@ package CarRentalSystem.Repository;
 
 import CarRentalSystem.Entitiy.Client;
 import CarRentalSystem.Entitiy.LicenceCategory;
+import CarRentalSystem.dbConnection.DatabaseConnection;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.HashMap;
 
 public class ClientRepository {
     private final String FILEPATH = "CarRentalFiles/Clients.csv";
     private final String SEPARATOR = ",";
+
+    public void save(Client client){
+        try(Connection con = DatabaseConnection.dbConnection()){
+            PreparedStatement statement = con.prepareStatement("INSERT INTO Clients VALUES (?,?,?,?,?,?)");
+            statement.setString(1, client.getId());
+            statement.setString(2, client.getName());
+            statement.setString(3, client.getLicenceId());
+            statement.setString(4, Character.toString(client.getGender()));
+            statement.setString(5, client.getPhoneNumber());
+            statement.setString(6, client.getLicenceCategory().name());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void writeToFile(HashMap<String, Client> clients) {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(FILEPATH))){

@@ -4,12 +4,9 @@ import CarRentalSystem.Entitiy.Rental;
 import CarRentalSystem.Helper;
 import CarRentalSystem.Repository.Rental_Id_Repository;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
