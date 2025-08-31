@@ -6,6 +6,7 @@ import CarRentalSystem.dbConnection.DatabaseConnection;
 import CarRentalSystem.util.HibernateUtil;
 import JavaAdv.Exercises.OOP.Task2.Student;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,16 +16,57 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
+import java.util.List;
 
 public class ClientRepository {
     private final String FILEPATH = "CarRentalFiles/Clients.csv";
     private final String SEPARATOR = ",";
 
-    public void create(Client client){
+    public Client create(Client client){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-
+            Transaction transaction = session.beginTransaction();
+            session.persist(client);
+            transaction.commit();
+            return client;
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return client;
+    }
+
+    public void delete(Client client){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Transaction transaction = session.beginTransaction();
+            session.remove(client);
+            transaction.commit();
+        } catch (Exception e) {}
+    }
+
+    public void update(Client client){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Transaction transaction = session.beginTransaction();
+            session.merge(client);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Client findById(String id){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            return session.get(Client.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Client> findAllHibernate(){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            return session.createQuery("FROM Client").list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
