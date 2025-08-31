@@ -11,7 +11,6 @@ import CarRentalSystem.Service.FilterService;
 import CarRentalSystem.Service.RentalService;
 import CarRentalSystem.Service.VehicleService;
 import CarRentalSystem.dbConnection.DatabaseConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

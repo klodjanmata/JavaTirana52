@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.HashMap;
 
 public class ClientRepository {
@@ -29,6 +30,27 @@ public class ClientRepository {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public HashMap<String, Client> findAll() {
+        try(Connection con = DatabaseConnection.dbConnection()){
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM client");
+            ResultSet resultSet = statement.executeQuery();
+            HashMap<String, Client> clients = new HashMap<>();
+            while (resultSet.next()){
+                Client client = new Client();
+                client.setId(resultSet.getString("id"));
+                client.setName(resultSet.getString("name"));
+                client.setLicenceId(resultSet.getString("licenceId"));
+                client.setLicenceCategory(LicenceCategory.valueOf(resultSet.getString("licenceCategory")));
+                client.setGender(resultSet.getString("gender").charAt(0));
+                client.setPhoneNumber(resultSet.getString("phoneNumber"));
+            }
+            return clients;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void writeToFile(HashMap<String, Client> clients) {
