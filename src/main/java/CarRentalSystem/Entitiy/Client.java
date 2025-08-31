@@ -1,11 +1,22 @@
 package CarRentalSystem.Entitiy;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "client")
 public class Client {
+    @Id
+    @Column(name = "id")
     private String id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "licenseId")
     private String licenceId;
+    @Column(name = "licenseCategory")
     private LicenceCategory licenceCategory;
+    @Column(name = "gender")
     private char gender;
+    @Column(name = "phoneNumber")
     private String phoneNumber;
 
     public Client(){}
