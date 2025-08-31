@@ -29,7 +29,7 @@ public class ApplicationManager {
         rentalRepository = new RentalRepository();
 
         vehicleService = new VehicleService(vehicleRepository.readFromFile());
-        clientService = new ClientService(clientRepository.readFromFile());
+        clientService = new ClientService(clientRepository.findAll());
         rentalService = new RentalService(rentalRepository.readFromFile());
 
         executeUpgrade(clientService, vehicleService, rentalService);

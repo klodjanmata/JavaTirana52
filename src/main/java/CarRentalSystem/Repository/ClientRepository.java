@@ -41,11 +41,13 @@ public class ClientRepository {
                 Client client = new Client();
                 client.setId(resultSet.getString("id"));
                 client.setName(resultSet.getString("name"));
-                client.setLicenceId(resultSet.getString("licenceId"));
-                client.setLicenceCategory(LicenceCategory.valueOf(resultSet.getString("licenceCategory")));
+                client.setLicenceId(resultSet.getString("licenseId"));
+                client.setLicenceCategory(LicenceCategory.valueOf(resultSet.getString("licenseCategory")));
                 client.setGender(resultSet.getString("gender").charAt(0));
                 client.setPhoneNumber(resultSet.getString("phoneNumber"));
+                clients.put(client.getId(), client);
             }
+            System.out.println("Successfully read clients from the database");
             return clients;
         }catch (Exception e) {
             e.printStackTrace();
