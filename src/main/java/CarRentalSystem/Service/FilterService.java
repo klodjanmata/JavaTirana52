@@ -1,6 +1,6 @@
 package CarRentalSystem.Service;
 
-import CarRentalSystem.Entitiy.*;
+import CarRentalSystem.Entity.*;
 import CarRentalSystem.Helper;
 
 import java.time.LocalDate;

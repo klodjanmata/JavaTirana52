@@ -1,8 +1,11 @@
 package CarRentalSystem.Repository;
 
-import CarRentalSystem.Entitiy.Client;
-import CarRentalSystem.Entitiy.LicenceCategory;
+import CarRentalSystem.Entity.Client;
+import CarRentalSystem.Entity.LicenceCategory;
 import CarRentalSystem.dbConnection.DatabaseConnection;
+import CarRentalSystem.util.HibernateUtil;
+import JavaAdv.Exercises.OOP.Task2.Student;
+import org.hibernate.Session;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,6 +19,14 @@ import java.util.HashMap;
 public class ClientRepository {
     private final String FILEPATH = "CarRentalFiles/Clients.csv";
     private final String SEPARATOR = ",";
+
+    public void create(Client client){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void save(Client client){
         try(Connection con = DatabaseConnection.dbConnection()){

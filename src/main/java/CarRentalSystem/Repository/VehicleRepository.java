@@ -1,7 +1,7 @@
 package CarRentalSystem.Repository;
 
-import CarRentalSystem.Entitiy.*;
-import CarRentalSystem.Entitiy.VehicleType;
+import CarRentalSystem.Entity.*;
+import CarRentalSystem.Entity.VehicleType;
 import CarRentalSystem.dbConnection.DatabaseConnection;
 
 import java.io.*;

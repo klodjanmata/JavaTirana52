@@ -1,4 +1,4 @@
-package CarRentalSystem.Entitiy;
+package CarRentalSystem.Entity;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package CarRentalSystem.Entitiy;
+package CarRentalSystem.Entity;
 
 public class MiniBuss extends Vehicle{
 

@@ -1,6 +1,6 @@
 package CarRentalSystem.Service;
 
-import CarRentalSystem.Entitiy.Rental;
+import CarRentalSystem.Entity.Rental;
 import CarRentalSystem.Helper;
 import CarRentalSystem.Repository.Rental_Id_Repository;
 

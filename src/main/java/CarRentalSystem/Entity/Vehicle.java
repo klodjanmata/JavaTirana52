@@ -1,4 +1,4 @@
-package CarRentalSystem.Entitiy;
+package CarRentalSystem.Entity;
 
 public abstract class Vehicle {
     private VehicleType vehicleType;

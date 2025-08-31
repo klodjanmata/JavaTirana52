@@ -1,6 +1,6 @@
 package CarRentalSystem.Repository;
 
-import CarRentalSystem.Entitiy.Rental;
+import CarRentalSystem.Entity.Rental;
 import CarRentalSystem.dbConnection.DatabaseConnection;
 
 import java.io.BufferedReader;

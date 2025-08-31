@@ -1,8 +1,8 @@
 package CarRentalSystem;
 
-import CarRentalSystem.Entitiy.Client;
-import CarRentalSystem.Entitiy.Rental;
-import CarRentalSystem.Entitiy.Vehicle;
+import CarRentalSystem.Entity.Client;
+import CarRentalSystem.Entity.Rental;
+import CarRentalSystem.Entity.Vehicle;
 import CarRentalSystem.Repository.ClientRepository;
 import CarRentalSystem.Repository.RentalRepository;
 import CarRentalSystem.Repository.VehicleRepository;

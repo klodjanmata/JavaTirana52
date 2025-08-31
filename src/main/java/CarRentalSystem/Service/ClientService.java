@@ -1,10 +1,9 @@
 package CarRentalSystem.Service;
 
-import CarRentalSystem.Entitiy.Client;
-import CarRentalSystem.Entitiy.LicenceCategory;
+import CarRentalSystem.Entity.Client;
+import CarRentalSystem.Entity.LicenceCategory;
 import CarRentalSystem.Helper;
 
-import java.lang.ref.Cleaner;
 import java.util.HashMap;
 
 public class ClientService {
