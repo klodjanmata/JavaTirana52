@@ -1,11 +1,15 @@
 package CarRentalSystem.Repository;
 
 import CarRentalSystem.Entitiy.Rental;
+import CarRentalSystem.dbConnection.DatabaseConnection;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.text.SimpleDateFormat;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -15,6 +19,25 @@ public class RentalRepository {
     private final String FIlEPATH = "CarRentalFiles/Rentals.csv";
     private final String SEPARATOR = ",";
     public static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+    public void save(Rental rental) {
+        try (Connection con = DatabaseConnection.dbConnection()) {
+            PreparedStatement statement = con.prepareStatement("INSERT INTO rental " +
+                    "(clientId, licensePlate, pricePerDay, numberOfDays, startDate, returnDate, totalPrice, paid) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            statement.setString(1, rental.getClientId());
+            statement.setString(2, rental.getLicensePlate());
+            statement.setInt(3, rental.getPricePerDay());
+            statement.setInt(4, rental.getNumberOfDays());
+            statement.setDate(5, Date.valueOf(rental.getStartDate()));
+            statement.setDate(6, Date.valueOf(rental.getReturnDate()));
+            statement.setInt(7, rental.getTotalPrice());
+            statement.setBoolean(8, rental.isPaid());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public HashMap<String, Rental> readFromFile() {
         HashMap<String, Rental> rentalsMap = new HashMap<>();

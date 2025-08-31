@@ -2,13 +2,62 @@ package CarRentalSystem.Repository;
 
 import CarRentalSystem.Entitiy.*;
 import CarRentalSystem.Entitiy.VehicleType;
+import CarRentalSystem.dbConnection.DatabaseConnection;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.HashMap;
 
 public class VehicleRepository {
     private final String FILEPATH = "CarRentalFiles/Vehicles.csv";
     private final String SEPARATOR = ",";
+
+    public void save(Vehicle vehicle){
+        try(Connection con = DatabaseConnection.dbConnection()){
+            PreparedStatement statement;
+            if (vehicle.getVehicleType() == VehicleType.CAR) {
+                statement = con.prepareStatement("INSERT INTO vehicle VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            }
+//            else if (vehicle.getVehicleType() == VehicleType.MOTORCYCLE){
+//                // motorcycle specific fields
+//            }
+//            else if (vehicle.getVehicleType() == VehicleType.MINIBUS){
+//                // minibus specific fields
+//            }
+            else{
+                statement = con.prepareStatement("INSERT INTO vehicle VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            }
+            statement.setString(1, vehicle.getVehicleType().name());
+            statement.setString(2, vehicle.getVin());
+            statement.setString(3, vehicle.getLicensePlate());
+            statement.setString(4, vehicle.getMake());
+            statement.setString(5, vehicle.getModel());
+            statement.setInt(6, vehicle.getYear());
+            statement.setString(7, vehicle.getColor());
+            statement.setInt(8, vehicle.getSeats());
+            statement.setInt(9, vehicle.getMinPricePerDay());
+            statement.setInt(10, vehicle.getMinNumberOfDays());
+            statement.setBoolean(11, vehicle.isAvailable());
+            if (vehicle.getVehicleType() == VehicleType.CAR) {
+                statement.setString(12, ((Car) vehicle).getEngineType().name());
+                statement.setInt(13, ((Car) vehicle).getNumberOfDoors());
+                statement.setBoolean(14, ((Car) vehicle).isHasSunroof());
+                statement.setString(15, ((Car) vehicle).getBodyType().name());
+                statement.setBoolean(16, ((Car) vehicle).isHasNavigation());
+                statement.setString(17, ((Car) vehicle).getTransmission().name());
+            }
+            else if (vehicle.getVehicleType() == VehicleType.MOTORCYCLE){
+                // motorcycle specific fields
+            }
+            else if (vehicle.getVehicleType() == VehicleType.MINIBUS){
+                // Minibus specific fields
+            }
+            statement.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public HashMap<String, Vehicle> readFromFile() {
         HashMap<String, Vehicle> vehiclesMap = new HashMap<>();

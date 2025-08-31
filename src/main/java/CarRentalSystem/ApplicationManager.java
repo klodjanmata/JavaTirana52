@@ -2,6 +2,7 @@ package CarRentalSystem;
 
 import CarRentalSystem.Entitiy.Client;
 import CarRentalSystem.Entitiy.Rental;
+import CarRentalSystem.Entitiy.Vehicle;
 import CarRentalSystem.Repository.ClientRepository;
 import CarRentalSystem.Repository.RentalRepository;
 import CarRentalSystem.Repository.VehicleRepository;
@@ -32,10 +33,12 @@ public class ApplicationManager {
         clientService = new ClientService(clientRepository.readFromFile());
         rentalService = new RentalService(rentalRepository.readFromFile());
 
-        executeUpgrade(clientService);
+        executeUpgrade(clientService, vehicleService, rentalService);
     }
 
-    public void executeUpgrade(ClientService clientService){
+    public void executeUpgrade(ClientService clientService,
+                               VehicleService vehicleService,
+                               RentalService rentalService){
         if (checkIfUpgradeNeeded("client")){
             for (Client c : clientService.getClientsMap().values()){
                 clientRepository.save(c);
@@ -43,10 +46,16 @@ public class ApplicationManager {
             System.out.println("SAVED CLIENTS IN DATABASE");
         }
         if (checkIfUpgradeNeeded("vehicle")){
-
+            for (Vehicle v : vehicleService.getVehicles().values()){
+                vehicleRepository.save(v);
+            }
+            System.out.println("SAVED VEHICLES IN DATABASE");
         }
         if (checkIfUpgradeNeeded("rental")){
-
+            for (Rental r : rentalService.getAllRentals().values()){
+                rentalRepository.save(r);
+            }
+            System.out.println("SAVED RENTALS IN DATABASE");
         }
     }
 
@@ -55,7 +64,7 @@ public class ApplicationManager {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + tableName + " LIMIT 1");
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()){
-                System.out.printf("NO UPGRADE NEEDED FOR " + tableName);
+                System.out.println("NO UPGRADE NEEDED FOR " + tableName);
                 return false;
             }
             return true;
