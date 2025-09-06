@@ -1,6 +1,9 @@
 package HibernateExercises.Util;
 
 import CarRentalSystem.Entity.Client;
+import HibernateExercises.Entity.Actor;
+import HibernateExercises.Entity.Genre;
+import HibernateExercises.Entity.Movie;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -11,6 +14,9 @@ public class HibernateUtil {
         try{
             return new Configuration()
                     .configure("hibernateexercises.cfg.xml")
+                    .addAnnotatedClass(Genre.class)
+                    .addAnnotatedClass(Actor.class)
+                    .addAnnotatedClass(Movie.class)
                     .buildSessionFactory();
         }catch(Exception e){
             e.printStackTrace();

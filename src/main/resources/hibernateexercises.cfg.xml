@@ -12,5 +12,8 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
 
+        <mapping class="HibernateExercises.Entity.Genre"/>
+        <mapping class="HibernateExercises.Entity.Actor"/>
+        <mapping class="HibernateExercises.Entity.Movie"/>
     </session-factory>
 </hibernate-configuration>
