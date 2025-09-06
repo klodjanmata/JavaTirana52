@@ -10,6 +10,7 @@
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
 
         <mapping class="Homework.Entity.Product"/>
 
