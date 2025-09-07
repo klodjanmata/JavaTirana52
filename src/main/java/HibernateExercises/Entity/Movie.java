@@ -1,32 +1,26 @@
 package HibernateExercises.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "movie")
 public class Movie {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "title")
     private String title;
 
     @Column(name = "year_of_release")
-    private String yearOfRelease;
+    private int yearOfRelease;
 
     @OneToOne
-    private Genre genres;
+    private Genre genre;
 
     @ManyToMany(mappedBy = "movies")
     private List<Actor> actors;

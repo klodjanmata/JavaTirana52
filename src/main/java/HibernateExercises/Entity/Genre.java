@@ -3,11 +3,7 @@ package HibernateExercises.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
 @Entity
 @Table(name = "genre")
 public class Genre {
