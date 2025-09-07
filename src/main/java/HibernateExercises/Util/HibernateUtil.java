@@ -14,6 +14,13 @@ public class HibernateUtil {
         try{
             return new Configuration()
                     .configure("hibernateexercises.cfg.xml")
+//                    .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect")
+//                    .setProperty("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver")
+//                    .setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/hibernateexercises")
+//                    .setProperty("hibernate.connection.username", "root")
+//                    .setProperty("hibernate.connection.password", "")
+//                    .setProperty("hibernate.show_sql", "true")
+//                    .setProperty("hibernate.hbm2ddl.auto", "update")
                     .addAnnotatedClass(Genre.class)
                     .addAnnotatedClass(Actor.class)
                     .addAnnotatedClass(Movie.class)
