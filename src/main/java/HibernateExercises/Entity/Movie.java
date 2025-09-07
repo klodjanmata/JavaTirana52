@@ -5,7 +5,10 @@ import lombok.*;
 
 import java.util.List;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "movie")
 public class Movie {
@@ -22,7 +25,17 @@ public class Movie {
     @OneToOne
     private Genre genre;
 
-    @ManyToMany(mappedBy = "movies")
+    @ManyToMany(mappedBy = "movies", fetch = FetchType.EAGER)
     private List<Actor> actors;
 
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", yearOfRelease=" + yearOfRelease +
+                ", genre=" + genre +
+                ", actors=" + actors == null ? "null" : actors.toString() +
+                '}';
+    }
 }

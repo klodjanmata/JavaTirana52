@@ -5,7 +5,10 @@ import lombok.*;
 
 import java.util.List;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "actor")
 public class Actor {
@@ -22,7 +25,17 @@ public class Actor {
     @Column(name = "year_of_birth")
     private int yearOfBirth;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Movie> movies;
 
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", yearOfBirth=" + yearOfBirth +
+                ", movies=" + movies == null ? "null" : movies.toString() +
+                '}';
+    }
 }

@@ -3,7 +3,10 @@ package HibernateExercises.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "genre")
 public class Genre {
@@ -13,4 +16,12 @@ public class Genre {
 
     @Column(name = "name")
     private String name;
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
